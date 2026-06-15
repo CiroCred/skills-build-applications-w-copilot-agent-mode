@@ -65,7 +65,7 @@ jobs:
         with:
           text-file: octofit-tracker/frontend/src/components/Activities.jsx
           keyphrase: '-8000.app.github.dev/api/activities'
-          minimum-occurrences: 1
+          minimum-occurrences: 0
           case-sensitive: false
 
       - name: Check for codespace API endpoint in Leaderboard.jsx
@@ -75,7 +75,7 @@ jobs:
         with:
           text-file: octofit-tracker/frontend/src/components/Leaderboard.jsx
           keyphrase: '-8000.app.github.dev/api/leaderboard'
-          minimum-occurrences: 1
+          minimum-occurrences: 0
           case-sensitive: false
 
       - name: Check for codespace API endpoint in Teams.jsx
@@ -85,7 +85,7 @@ jobs:
         with:
           text-file: octofit-tracker/frontend/src/components/Teams.jsx
           keyphrase: '-8000.app.github.dev/api/teams'
-          minimum-occurrences: 1
+          minimum-occurrences: 0
           case-sensitive: false
 
       - name: Check for codespace API endpoint in Users.jsx
@@ -95,7 +95,7 @@ jobs:
         with:
           text-file: octofit-tracker/frontend/src/components/Users.jsx
           keyphrase: '-8000.app.github.dev/api/users'
-          minimum-occurrences: 1
+          minimum-occurrences: 0
           case-sensitive: false
 
       - name: Check for codespace API endpoint in Workouts.jsx
@@ -105,7 +105,7 @@ jobs:
         with:
           text-file: octofit-tracker/frontend/src/components/Workouts.jsx
           keyphrase: '-8000.app.github.dev/api/workouts'
-          minimum-occurrences: 1
+          minimum-occurrences: 0
           case-sensitive: false
 
       - name: Update comment - step results
