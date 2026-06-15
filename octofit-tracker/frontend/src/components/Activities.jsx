@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getApiUrl, normalizeCollection } from '../api.js';
 
 const Activities = () => {
   const [activities, setActivities] = useState([]);
@@ -7,9 +8,9 @@ const Activities = () => {
   useEffect(() => {
     const fetchActivities = async () => {
       try {
-        const response = await fetch('-8000.app.github.dev/api/activities');
+        const response = await fetch(getApiUrl('activities'));
         const data = await response.json();
-        setActivities(data);
+        setActivities(normalizeCollection(data));
       } catch (error) {
         console.error('Error fetching activities:', error);
       } finally {
@@ -31,8 +32,8 @@ const Activities = () => {
         <p>No activities found.</p>
       ) : (
         <ul>
-          {activities.map((activity, index) => (
-            <li key={index}>{activity.name}</li>
+          {activities.map((activity) => (
+            <li key={activity._id}>{activity.name}</li>
           ))}
         </ul>
       )}

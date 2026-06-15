@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getApiUrl, normalizeCollection } from '../api.js';
 
 const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
@@ -7,9 +8,9 @@ const Leaderboard = () => {
   useEffect(() => {
     const fetchLeaderboard = async () => {
       try {
-        const response = await fetch('-8000.app.github.dev/api/leaderboard');
+        const response = await fetch(getApiUrl('leaderboard'));
         const data = await response.json();
-        setLeaderboard(data);
+        setLeaderboard(normalizeCollection(data));
       } catch (error) {
         console.error('Error fetching leaderboard:', error);
       } finally {
@@ -40,9 +41,9 @@ const Leaderboard = () => {
           </thead>
           <tbody>
             {leaderboard.map((entry, index) => (
-              <tr key={index}>
+              <tr key={entry._id || index}>
                 <td style={{ border: '1px solid #ddd', padding: '0.5rem' }}>{index + 1}</td>
-                <td style={{ border: '1px solid #ddd', padding: '0.5rem' }}>{entry.user}</td>
+                <td style={{ border: '1px solid #ddd', padding: '0.5rem' }}>{entry.user?.name || entry.user}</td>
                 <td style={{ border: '1px solid #ddd', padding: '0.5rem' }}>{entry.score}</td>
               </tr>
             ))}
